@@ -5,8 +5,6 @@ This version runs without the separate FastAPI backend for easier deployment
 
 # Fix for ChromaDB SQLite issues on Linux (Streamlit Cloud)
 import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 # Your existing imports come after
 import streamlit as st
 import os
