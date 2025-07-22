@@ -3,6 +3,12 @@ Standalone Streamlit App for Personal AI Assistant
 This version runs without the separate FastAPI backend for easier deployment
 """
 
+# Fix for ChromaDB SQLite issues on Linux (Streamlit Cloud)
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+# Your existing imports come after
 import streamlit as st
 import os
 import tempfile
