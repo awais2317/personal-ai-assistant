@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal AI Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            font-size: 18px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .feature h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .feature ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .feature li {
+            margin: 5px 0;
+            color: #555;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .nav-button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .api-info {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .api-info h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .api-endpoint {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Personal AI Assistant</h1>
+            <p>Your intelligent companion for document analysis, business insights, and personal organization</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>📄 Document Analysis</h3>
+                <ul>
+                    <li>Process XLS, Word, PDF files</li>
+                    <li>Extract and analyze content</li>
+                    <li>Search across documents</li>
+                    <li>Context-aware responses</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>💼 Business Intelligence</h3>
+                <ul>
+                    <li>Expense tracking and categorization</li>
+                    <li>Revenue analysis and forecasting</li>
+                    <li>Financial trend identification</li>
+                    <li>Budget planning assistance</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>🎓 Academic Support</h3>
+                <ul>
+                    <li>Research paper analysis</li>
+                    <li>Graduate school preparation</li>
+                    <li>Writing assistance</li>
+                    <li>Homework organization</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>🗂️ Personal Organization</h3>
+                <ul>
+                    <li>Diary and note organization</li>
+                    <li>Idea structuring</li>
+                    <li>Project planning</li>
+                    <li>Task management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="/docs" class="nav-button">📚 API Documentation</a>
+            <a href="http://localhost:8501" class="nav-button">💬 Web Interface</a>
+            <a href="/api/v1/health" class="nav-button">❤️ Health Check</a>
+        </div>
+
+        <div class="api-info">
+            <h3>🔗 API Endpoints</h3>
+            <div class="api-endpoint">POST /api/v1/chat - Send messages to AI</div>
+            <div class="api-endpoint">POST /api/v1/upload - Upload documents</div>
+            <div class="api-endpoint">GET /api/v1/documents - List documents</div>
+            <div class="api-endpoint">POST /api/v1/search - Search documents</div>
+            <div class="api-endpoint">POST /api/v1/analyze/business - Business analysis</div>
+            <div class="api-endpoint">GET /api/v1/stats - System statistics</div>
+        </div>
+
+        <div class="api-info">
+            <h3>🚀 Getting Started</h3>
+            <p><strong>1. Set up your environment:</strong></p>
+            <ul>
+                <li>Copy <code>.env.example</code> to <code>.env</code></li>
+                <li>Add your OpenAI API key to the <code>.env</code> file</li>
+            </ul>
+            
+            <p><strong>2. Start the web interface:</strong></p>
+            <div class="api-endpoint">streamlit run streamlit_app.py</div>
+            
+            <p><strong>3. Upload documents and start chatting!</strong></p>
+            <ul>
+                <li>Upload XLS, Word, or PDF files</li>
+                <li>Ask questions about your documents</li>
+                <li>Get business insights from financial data</li>
+                <li>Organize your research and writing</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
