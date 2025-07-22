@@ -33,13 +33,9 @@ class VectorStore:
             db_path = Path(settings.CHROMA_DB_PATH)
             db_path.mkdir(parents=True, exist_ok=True)
             
-            # Initialize ChromaDB client
+            # Initialize ChromaDB client with simpler settings for cloud deployment
             self.client = chromadb.PersistentClient(
-                path=str(db_path),
-                settings=ChromaSettings(
-                    anonymized_telemetry=False,
-                    allow_reset=True
-                )
+                path=str(db_path)
             )
             
             # Get or create collection
