@@ -19,7 +19,11 @@ class EnhancedChatEngine:
     """Enhanced chat engine with document context and conversation management"""
     
     def __init__(self):
-        self.client = openai.OpenAI(api_key=settings.OPENAI_API_KEY)
+        # Initialize OpenAI client with proper configuration
+        self.client = openai.OpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            timeout=30.0
+        )
         self.vector_store = VectorStore()
         self.chat_manager = ChatManager()
         

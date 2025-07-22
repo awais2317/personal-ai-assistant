@@ -22,7 +22,10 @@ class ChatEngine:
         
         # Set up OpenAI client
         from openai import OpenAI
-        self.openai_client = OpenAI(api_key=settings.OPENAI_API_KEY)
+        self.openai_client = OpenAI(
+            api_key=settings.OPENAI_API_KEY,
+            timeout=30.0
+        )
         
         # System prompt for the AI assistant
         self.system_prompt = """

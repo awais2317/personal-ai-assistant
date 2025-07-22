@@ -36,6 +36,11 @@ def initialize_settings():
     """Initialize settings and create required directories"""
     settings = Settings()
     
+    # Check for API key in Streamlit secrets first
+    if not settings.OPENAI_API_KEY or settings.OPENAI_API_KEY == "your_openai_api_key_here":
+        if hasattr(st, 'secrets') and 'OPENAI_API_KEY' in st.secrets:
+            settings.OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+    
     # Create required directories
     os.makedirs("data/chroma_db", exist_ok=True)
     os.makedirs("uploads", exist_ok=True)
@@ -54,13 +59,25 @@ def initialize_components():
         if not settings.OPENAI_API_KEY or settings.OPENAI_API_KEY == "your_openai_api_key_here":
             st.error("🔑 OpenAI API key not configured!")
             st.error("Please set your OpenAI API key in Streamlit secrets or environment variables.")
+            st.info("Go to your Streamlit Cloud dashboard → App settings → Secrets and add: OPENAI_API_KEY = \"your_key_here\"")
             st.stop()
         
-        enhanced_chat_engine = EnhancedChatEngine()
-        chat_manager = ChatManager()
-        vector_store = VectorStore()
-        document_processor = DocumentProcessor()
-        file_handler = FileHandler()
+        # Initialize components with error handling
+        try:
+            enhanced_chat_engine = EnhancedChatEngine()
+        except Exception as e:
+            st.error(f"Failed to initialize chat engine: {str(e)}")
+            st.error("This might be due to OpenAI API configuration issues.")
+            st.stop()
+            
+        try:
+            chat_manager = ChatManager()
+            vector_store = VectorStore()
+            document_processor = DocumentProcessor()
+            file_handler = FileHandler()
+        except Exception as e:
+            st.error(f"Failed to initialize support components: {str(e)}")
+            st.stop()
         
         return {
             'enhanced_chat_engine': enhanced_chat_engine,

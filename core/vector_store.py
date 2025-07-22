@@ -69,7 +69,10 @@ class VectorStore:
         """Generate embeddings for a list of texts using OpenAI"""
         try:
             from openai import OpenAI
-            client = OpenAI(api_key=settings.OPENAI_API_KEY)
+            client = OpenAI(
+                api_key=settings.OPENAI_API_KEY,
+                timeout=30.0
+            )
             
             response = client.embeddings.create(
                 model=settings.EMBEDDING_MODEL,
